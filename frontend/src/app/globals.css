@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cryo-900: #0a0f1e;
+  --color-cryo-800: #0f172a;
+  --color-cryo-700: #162033;
+  --color-cryo-600: #1e293b;
+  --color-cryo-500: #2a3a52;
+  --color-cryo-400: #384b68;
+  --color-cryo-300: #64748b;
+  --color-cryo-200: #94a3b8;
+  --color-cryo-100: #cbd5e1;
+  --color-cryo-50: #e2e8f0;
+  --color-accent: #38bdf8;
+  --color-accent-dim: #0ea5e9;
+  --color-accent-glow: rgba(56, 189, 248, 0.15);
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--color-cryo-900);
+  color: var(--color-cryo-100);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#__next {
+  position: relative;
+  z-index: 1;
+}
+
+@layer components {
+  .btn {
+    @apply px-3 py-1.5 text-sm border border-cryo-400 rounded-md bg-cryo-600 text-cryo-200 hover:border-accent hover:text-accent transition cursor-pointer;
+  }
+  .btn-primary {
+    @apply px-3 py-1.5 text-sm border border-accent-dim rounded-md bg-accent-dim/20 text-accent hover:bg-accent-dim/30 transition cursor-pointer;
+  }
+  .btn-danger {
+    @apply px-3 py-1.5 text-sm border border-red-500/40 rounded-md bg-red-500/15 text-red-400 hover:bg-red-500/25 transition cursor-pointer;
+  }
+  .input {
+    @apply px-2.5 py-1.5 text-sm border border-cryo-500/60 rounded-md bg-cryo-900/60 text-cryo-200 focus:outline-none focus:border-accent/60 focus:ring-1 focus:ring-accent/20;
+  }
+  .card {
+    @apply bg-cryo-700/60 border border-cryo-500/50 rounded-xl backdrop-blur-sm;
+  }
+  .stage-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold font-mono tracking-wide border;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cryo-400);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cryo-300);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

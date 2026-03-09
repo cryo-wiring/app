@@ -1,0 +1,12 @@
+.git
+.gitmodules
+backend/
+frontend/
+*.md
+Makefile
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+data/
+compose*.yaml
