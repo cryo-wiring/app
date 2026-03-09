@@ -1,6 +1,4 @@
 .git
-.gitmodules
-backend/
 frontend/
 *.md
 Makefile

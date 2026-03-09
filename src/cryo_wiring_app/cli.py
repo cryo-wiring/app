@@ -28,7 +28,7 @@ def serve(
 
     Examples:
 
-        # Use the backend submodule (default)
+        # Use local data/ directory (default)
         cryo-wiring-app
 
         # Connect to a GitHub repository (clones on first run, pulls on restart)
