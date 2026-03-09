@@ -4,6 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "cryo-wiring",
   description: "Dilution refrigerator wiring configuration manager",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
