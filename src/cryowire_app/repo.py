@@ -1,4 +1,4 @@
-"""Git repository manager for cryo-wiring data."""
+"""Git repository manager for cryowire data."""
 
 from __future__ import annotations
 
@@ -55,7 +55,7 @@ class SyncStatus:
 
 
 class DataRepo:
-    """Manages a local clone of a cryo-wiring data repository."""
+    """Manages a local clone of a cryowire data repository."""
 
     def __init__(self, local_path: Path, remote_url: str | None = None) -> None:
         self.local_path = local_path.resolve()
@@ -144,11 +144,11 @@ class DataRepo:
             try:
                 config.get_value("user", "name")
             except Exception:
-                config.set_value("user", "name", "cryo-wiring-app")
+                config.set_value("user", "name", "cryowire-app")
             try:
                 config.get_value("user", "email")
             except Exception:
-                config.set_value("user", "email", "cryo-wiring-app@localhost")
+                config.set_value("user", "email", "cryowire-app@localhost")
         finally:
             config.release()
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "cryo-wiring",
+  title: "cryowire",
   description: "Dilution refrigerator wiring configuration manager",
   icons: {
     icon: [

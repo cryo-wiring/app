@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
-    && git config --global user.name "cryo-wiring-app" \
-    && git config --global user.email "cryo-wiring-app@localhost"
+    && git config --global user.name "cryowire-app" \
+    && git config --global user.email "cryowire-app@localhost"
 
 WORKDIR /app
 
@@ -21,4 +21,4 @@ ENV PORT=8000
 
 EXPOSE 8000
 
-CMD ["cryo-wiring-app"]
+CMD ["cryowire-app"]

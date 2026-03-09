@@ -151,11 +151,11 @@ function SetupScreen({ onConnect }: { onConnect: () => void }) {
     <div className="flex flex-col items-center text-center max-w-md">
       <img
         src="/logo.png"
-        alt="cryo-wiring"
+        alt="cryowire"
         className="w-20 h-20 object-contain mb-4"
         style={{ clipPath: "inset(15% 10% 15% 10%)" }}
       />
-      <h1 className="text-xl font-bold text-cryo-50 mb-2">Welcome to cryo-wiring</h1>
+      <h1 className="text-xl font-bold text-cryo-50 mb-2">Welcome to cryowire</h1>
       <p className="text-sm text-cryo-300 mb-6">
         Connect a data repository to get started. You can use an existing repository or the
         template to create a new one.
@@ -175,7 +175,7 @@ function EmptyState() {
     <div className="flex flex-col items-center justify-center h-full text-cryo-400 select-none">
       <img
         src="/logo.png"
-        alt="cryo-wiring"
+        alt="cryowire"
         className="w-20 h-20 object-contain opacity-40 mb-3"
       />
       <p className="text-sm font-medium text-cryo-300 mb-1">No cooldown selected</p>

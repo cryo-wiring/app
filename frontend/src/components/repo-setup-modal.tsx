@@ -44,7 +44,7 @@ export function RepoSetupModal({ currentUrl, onClose, onConnected, dismissable =
     <Modal title="Connect Repository" onClose={dismissable ? (onClose ?? (() => {})) : () => {}}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <p className="text-sm text-cryo-300">
-          Enter the URL of a cryo-wiring data repository. It will be cloned to the server.
+          Enter the URL of a cryowire data repository. It will be cloned to the server.
         </p>
         <label className="flex flex-col gap-1.5">
           <span className="text-xs font-medium text-cryo-300">Repository URL</span>

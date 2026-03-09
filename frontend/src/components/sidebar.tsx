@@ -60,12 +60,12 @@ export function Sidebar({ cryos, selected, onSelect, onRefresh, repoInfo, onRepo
         <div className="flex items-center gap-2">
           <img
             src="/logo.png"
-            alt="cryo-wiring"
+            alt="cryowire"
             className="h-12 object-contain"
             style={{ clipPath: "inset(15% 10% 15% 10%)", margin: "-0.25rem 0" }}
           />
           <div>
-            <h1 className="text-base font-bold text-cryo-50 tracking-tight">cryo-wiring</h1>
+            <h1 className="text-base font-bold text-cryo-50 tracking-tight">cryowire</h1>
             <p className="text-[11px] text-cryo-400 mt-0.5">Wiring Configuration Manager</p>
           </div>
         </div>
@@ -146,7 +146,7 @@ export function Sidebar({ cryos, selected, onSelect, onRefresh, repoInfo, onRepo
 
       {/* Footer */}
       <div className="px-4 py-2.5 border-t border-cryo-500/30 text-[10px] text-cryo-500">
-        cryo-wiring v0.1
+        cryowire v0.1
       </div>
 
       {showNew && (

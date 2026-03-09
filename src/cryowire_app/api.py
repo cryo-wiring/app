@@ -17,26 +17,26 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
 
-from cryo_wiring_core.bundle import export_cooldown, write_cooldown
-from cryo_wiring_core.config import resolve_template_path
-from cryo_wiring_core.diagram import generate_diagram
-from cryo_wiring_core.layout import CryoLayout
-from cryo_wiring_core.loader import (
+from cryowire.bundle import export_cooldown, write_cooldown
+from cryowire.config import resolve_template_path
+from cryowire.diagram import generate_diagram
+from cryowire.layout import CryoLayout
+from cryowire.loader import (
     default_components_path,
     expand_modules,
     load_components,
     load_yaml,
     resolve_templates_dir,
 )
-from cryo_wiring_core.models import WiringConfig
-from cryo_wiring_core.builder import (
+from cryowire.models import WiringConfig
+from cryowire.builder import (
     make_control_lines,
     make_readout_send_lines,
     make_readout_return_lines,
     make_wiring_yaml,
 )
 
-from cryo_wiring_app.repo import DataRepo
+from cryowire_app.repo import DataRepo
 
 
 # ── Response models (used by OpenAPI / Orval) ──────────────────────────────
@@ -207,7 +207,7 @@ def _find_templates_dir(data_root: Path | None = None) -> Path:
     """Locate the templates directory.
 
     Resolution order:
-    1. ``template_path`` from ``.cryo-wiring.yaml`` in the data repo.
+    1. ``template_path`` from ``.cryowire.yaml`` in the data repo.
     2. ``<data_root>/templates/`` if it exists.
     3. App-bundled templates.
     4. Core-bundled templates (fallback).
@@ -286,7 +286,7 @@ def _line_from_bundle(line_data: dict, catalog: dict) -> LineDetail:
 # ── App factory ────────────────────────────────────────────────────────────
 
 def create_app(data_repo: DataRepo) -> FastAPI:
-    app = FastAPI(title="cryo-wiring-app", version="0.1.0")
+    app = FastAPI(title="cryowire-app", version="0.1.0")
 
     app.add_middleware(
         CORSMiddleware,
@@ -466,7 +466,7 @@ def create_app(data_repo: DataRepo) -> FastAPI:
         tdir = templates_dir
         if data_root and tdir.is_relative_to(data_root):
             source = "repository"
-        elif "cryo_wiring_core" in str(tdir):
+        elif "cryowire" in str(tdir):
             source = "built-in"
         else:
             source = "app"

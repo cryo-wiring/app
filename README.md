@@ -1,14 +1,14 @@
-# cryo-wiring-app
+# cryowire-app
 
 Web UI for browsing and editing dilution refrigerator wiring configurations.
 
-Built with FastAPI + Next.js on top of [cryo-wiring-core](https://github.com/cryo-wiring/core).
+Built with FastAPI + Next.js on top of [cryowire](https://github.com/cryowire/core).
 
 ## For Users
 
 ### 1. Create your data repository
 
-Go to [cryo-wiring/template](https://github.com/cryo-wiring/template) and click **"Use this template"** to create your own data repository on GitHub.
+Go to [cryowire/template](https://github.com/cryowire/template) and click **"Use this template"** to create your own data repository on GitHub.
 
 ### 2. Customize templates
 
@@ -26,7 +26,7 @@ Delete the sample data (`your-cryo/` directory) and push.
 ### 3. Launch the app
 
 ```bash
-git clone https://github.com/cryo-wiring/app.git
+git clone https://github.com/cryowire/app.git
 cd app
 cp .env.example .env
 ```
@@ -58,10 +58,10 @@ Open http://localhost:3000 and start managing your wiring configurations.
 
 | Repository | Description |
 |---|---|
-| [cryo-wiring/spec](https://github.com/cryo-wiring/spec) | YAML format specification & schemas |
-| [cryo-wiring/core](https://github.com/cryo-wiring/core) | Python library (models, validation, diagram, builder) |
-| [cryo-wiring/cli](https://github.com/cryo-wiring/cli) | CLI tool |
-| [cryo-wiring/template](https://github.com/cryo-wiring/template) | Data repository template |
+| [cryowire/spec](https://github.com/cryowire/spec) | YAML format specification & schemas |
+| [cryowire/core](https://github.com/cryowire/core) | Python library (models, validation, diagram, builder) |
+| [cryowire/cli](https://github.com/cryowire/cli) | CLI tool |
+| [cryowire/template](https://github.com/cryowire/template) | Data repository template |
 
 ---
 
@@ -100,9 +100,9 @@ make api-schema   # Export schema + regenerate frontend client (Orval)
 
 ```
 app/
-├── src/cryo_wiring_app/        # FastAPI backend
+├── src/cryowire_app/        # FastAPI backend
 │   ├── api.py                  # REST API endpoints
-│   ├── cli.py                  # CLI entry point (cryo-wiring-app)
+│   ├── cli.py                  # CLI entry point (cryowire-app)
 │   └── repo.py                 # Git data repository manager
 ├── frontend/                   # Next.js frontend
 │   ├── src/

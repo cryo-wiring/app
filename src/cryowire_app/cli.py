@@ -1,4 +1,4 @@
-"""CLI for cryo-wiring-app web server."""
+"""CLI for cryowire-app web server."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Annotated, Optional
 
 import typer
 
-app = typer.Typer(help="Web UI for cryo-wiring configuration manager.")
+app = typer.Typer(help="Web UI for cryowire configuration manager.")
 
 
 @app.command()
@@ -24,27 +24,27 @@ def serve(
     port: Annotated[int, typer.Option(help="Port number")] = int(os.environ.get("PORT", "8000")),
     host: Annotated[str, typer.Option(help="Host address")] = os.environ.get("HOST", "127.0.0.1"),
 ) -> None:
-    """Start the cryo-wiring web UI.
+    """Start the cryowire web UI.
 
     Examples:
 
         # Use local data/ directory (default)
-        cryo-wiring-app
+        cryowire-app
 
         # Connect to a GitHub repository (clones on first run, pulls on restart)
-        cryo-wiring-app --repo https://github.com/user/cryo-data.git
+        cryowire-app --repo https://github.com/user/cryo-data.git
 
         # Use a local directory (no git integration)
-        cryo-wiring-app --data-dir ./examples
+        cryowire-app --data-dir ./examples
 
         # Both: clone to a specific directory
-        cryo-wiring-app --repo https://github.com/user/cryo-data.git --data-dir ./my-data
+        cryowire-app --repo https://github.com/user/cryo-data.git --data-dir ./my-data
     """
     import uvicorn
     from rich.console import Console
 
-    from cryo_wiring_app.api import create_app
-    from cryo_wiring_app.repo import DataRepo
+    from cryowire_app.api import create_app
+    from cryowire_app.repo import DataRepo
 
     console = Console()
 

@@ -3,8 +3,8 @@
 import json
 from pathlib import Path
 
-from cryo_wiring_app.api import create_app
-from cryo_wiring_app.repo import DataRepo
+from cryowire_app.api import create_app
+from cryowire_app.repo import DataRepo
 
 # Create a dummy repo for schema generation
 dummy_repo = DataRepo(local_path=Path("/tmp/dummy"))

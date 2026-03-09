@@ -21,7 +21,7 @@ dev:
 
 # Start backend API server using local data/ directory
 backend:
-	cryo-wiring-app --data-dir ./data
+	cryowire-app --data-dir ./data
 
 # Start frontend dev server
 frontend:

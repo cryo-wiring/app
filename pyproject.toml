@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cryo-wiring-app"
+name = "cryowire-app"
 version = "0.1.0"
-description = "Web UI for cryo-wiring configuration manager"
+description = "Web UI for cryowire configuration manager"
 requires-python = ">=3.11"
 dependencies = [
-    "cryo-wiring-core @ git+https://github.com/cryo-wiring/core.git",
+    "cryowire @ git+https://github.com/cryowire/core.git",
     "fastapi>=0.110",
     "uvicorn[standard]>=0.27",
     "gitpython>=3.1",
@@ -19,16 +19,16 @@ dependencies = [
 ]
 
 [project.scripts]
-cryo-wiring-app = "cryo_wiring_app.cli:app"
+cryowire-app = "cryowire_app.cli:app"
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cryo_wiring_app"]
+packages = ["src/cryowire_app"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"templates" = "cryo_wiring_app/templates"
+"templates" = "cryowire_app/templates"
 
 [dependency-groups]
 dev = ["pytest>=8.0"]
