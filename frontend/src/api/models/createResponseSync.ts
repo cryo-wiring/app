@@ -4,5 +4,6 @@
  * cryo-wiring-app
  * OpenAPI spec version: 0.1.0
  */
+import type { SyncResult } from './syncResult';
 
-export type NewCooldownRequestCooldownDate = string | null;
+export type CreateResponseSync = SyncResult | null;

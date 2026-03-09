@@ -5,4 +5,7 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type NewCooldownRequestCooldownDate = string | null;
+export interface YearGroup {
+  year: string;
+  cooldowns: string[];
+}

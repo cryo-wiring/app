@@ -1,1 +1,1625 @@
-python: can't open file '/Users/orangekame3/src/github.com/orangekame3/cryo-wiring/frontend/scripts/export_openapi.py': [Errno 2] No such file or directory
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "cryo-wiring-app",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/repo": {
+      "get": {
+        "summary": "Get Repo Info",
+        "operationId": "get_repo_info_api_repo_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepoInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repo/setup": {
+      "post": {
+        "summary": "Setup Repo",
+        "operationId": "setup_repo_api_repo_setup_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepoSetupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepoInfo"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repo/pull": {
+      "post": {
+        "summary": "Pull Repo",
+        "operationId": "pull_repo_api_repo_pull_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repo/sync": {
+      "get": {
+        "summary": "Get Sync Info",
+        "operationId": "get_sync_info_api_repo_sync_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos": {
+      "get": {
+        "summary": "List Cryos",
+        "operationId": "list_cryos_api_cryos_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CryoEntry"
+                  },
+                  "type": "array",
+                  "title": "Response List Cryos Api Cryos Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/bundle": {
+      "get": {
+        "summary": "Get Cooldown Bundle",
+        "description": "Return the raw cooldown.yaml bundle as JSON.",
+        "operationId": "get_cooldown_bundle_api_cryos__cryo___year___cooldown__bundle_get",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}": {
+      "get": {
+        "summary": "Get Cooldown",
+        "operationId": "get_cooldown_api_cryos__cryo___year___cooldown__get",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CooldownDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/diagram": {
+      "get": {
+        "summary": "Get Diagram",
+        "operationId": "get_diagram_api_cryos__cryo___year___cooldown__diagram_get",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "image/svg+xml": {}
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/diagram/full": {
+      "get": {
+        "summary": "Get Diagram Full",
+        "operationId": "get_diagram_full_api_cryos__cryo___year___cooldown__diagram_full_get",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "image/svg+xml": {}
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/components": {
+      "get": {
+        "summary": "Get Components",
+        "operationId": "get_components_api_components_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/templates": {
+      "get": {
+        "summary": "Get Templates",
+        "operationId": "get_templates_api_templates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplatesInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/templates/{filename}": {
+      "put": {
+        "summary": "Update Template",
+        "operationId": "update_template_api_templates__filename__put",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Filename"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TemplateUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/lines": {
+      "get": {
+        "summary": "Get Lines",
+        "operationId": "get_lines_api_cryos__cryo___year___cooldown__lines_get",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/lines/{file_type}/{line_id}": {
+      "put": {
+        "summary": "Update Line",
+        "operationId": "update_line_api_cryos__cryo___year___cooldown__lines__file_type___line_id__put",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          },
+          {
+            "name": "file_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "File Type"
+            }
+          },
+          {
+            "name": "line_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Line Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LineUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/lines/{file_type}": {
+      "put": {
+        "summary": "Bulk Update Lines",
+        "description": "Apply the same stage configuration to multiple lines at once.",
+        "operationId": "bulk_update_lines_api_cryos__cryo___year___cooldown__lines__file_type__put",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          },
+          {
+            "name": "file_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "File Type"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkLineUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cooldowns/new": {
+      "post": {
+        "summary": "Create Cooldown",
+        "operationId": "create_cooldown_api_cooldowns_new_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCooldownRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/cooldowns/new": {
+      "post": {
+        "summary": "Add Cooldown",
+        "operationId": "add_cooldown_api_cryos__cryo__cooldowns_new_post",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCooldownForCryoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cryos/{cryo}/{year}/{cooldown}/metadata": {
+      "patch": {
+        "summary": "Update Metadata",
+        "operationId": "update_metadata_api_cryos__cryo___year___cooldown__metadata_patch",
+        "parameters": [
+          {
+            "name": "cryo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cryo"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "cooldown",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cooldown"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BulkLineUpdate": {
+        "properties": {
+          "line_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Line Ids"
+          },
+          "stages": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_ids",
+          "stages"
+        ],
+        "title": "BulkLineUpdate",
+        "description": "Apply the same stage changes to multiple lines at once."
+      },
+      "ChipInfo": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "num_qubits": {
+            "type": "integer",
+            "title": "Num Qubits"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "num_qubits"
+        ],
+        "title": "ChipInfo"
+      },
+      "ComponentDetail": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "manufacturer": {
+            "type": "string",
+            "title": "Manufacturer",
+            "default": ""
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "catalog_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalog Key"
+          },
+          "serial": {
+            "type": "string",
+            "title": "Serial",
+            "default": ""
+          },
+          "value_dB": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value Db"
+          },
+          "gain_dB": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gain Db"
+          },
+          "filter_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter Type"
+          },
+          "amplifier_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Amplifier Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "model"
+        ],
+        "title": "ComponentDetail"
+      },
+      "CooldownDetail": {
+        "properties": {
+          "metadata": {
+            "$ref": "#/components/schemas/CooldownMeta"
+          },
+          "chip": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChipInfo"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "summary": {
+            "items": {
+              "$ref": "#/components/schemas/SummarySection"
+            },
+            "type": "array",
+            "title": "Summary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "metadata",
+          "summary"
+        ],
+        "title": "CooldownDetail"
+      },
+      "CooldownMeta": {
+        "properties": {
+          "cooldown_id": {
+            "type": "string",
+            "title": "Cooldown Id"
+          },
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "cryo": {
+            "type": "string",
+            "title": "Cryo"
+          },
+          "operator": {
+            "type": "string",
+            "title": "Operator",
+            "default": ""
+          },
+          "purpose": {
+            "type": "string",
+            "title": "Purpose",
+            "default": ""
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "cooldown_id",
+          "date",
+          "cryo"
+        ],
+        "title": "CooldownMeta"
+      },
+      "CreateResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "path": {
+            "type": "string",
+            "title": "Path"
+          },
+          "sync": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SyncResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "path"
+        ],
+        "title": "CreateResponse"
+      },
+      "CryoEntry": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "years": {
+            "items": {
+              "$ref": "#/components/schemas/YearGroup"
+            },
+            "type": "array",
+            "title": "Years"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "years"
+        ],
+        "title": "CryoEntry"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LineDetail": {
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "title": "Line Id"
+          },
+          "qubit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qubit"
+          },
+          "qubits": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qubits"
+          },
+          "stages": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/ComponentDetail"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_id",
+          "stages"
+        ],
+        "title": "LineDetail"
+      },
+      "LineUpdate": {
+        "properties": {
+          "stages": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "stages"
+        ],
+        "title": "LineUpdate"
+      },
+      "LinesResponse": {
+        "properties": {
+          "control": {
+            "items": {
+              "$ref": "#/components/schemas/LineDetail"
+            },
+            "type": "array",
+            "title": "Control"
+          },
+          "readout_send": {
+            "items": {
+              "$ref": "#/components/schemas/LineDetail"
+            },
+            "type": "array",
+            "title": "Readout Send"
+          },
+          "readout_return": {
+            "items": {
+              "$ref": "#/components/schemas/LineDetail"
+            },
+            "type": "array",
+            "title": "Readout Return"
+          }
+        },
+        "type": "object",
+        "required": [
+          "control",
+          "readout_send",
+          "readout_return"
+        ],
+        "title": "LinesResponse"
+      },
+      "MetadataUpdate": {
+        "properties": {
+          "operator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operator"
+          },
+          "purpose": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Purpose"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "title": "MetadataUpdate"
+      },
+      "ModuleStage": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "components": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Components"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "components"
+        ],
+        "title": "ModuleStage"
+      },
+      "ModuleTemplate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "file": {
+            "type": "string",
+            "title": "File"
+          },
+          "line_type": {
+            "type": "string",
+            "title": "Line Type"
+          },
+          "stages": {
+            "items": {
+              "$ref": "#/components/schemas/ModuleStage"
+            },
+            "type": "array",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "file",
+          "line_type",
+          "stages"
+        ],
+        "title": "ModuleTemplate"
+      },
+      "NewCooldownForCryoRequest": {
+        "properties": {
+          "cooldown_id": {
+            "type": "string",
+            "title": "Cooldown Id",
+            "default": ""
+          },
+          "cooldown_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cooldown Date"
+          },
+          "operator": {
+            "type": "string",
+            "title": "Operator",
+            "default": ""
+          },
+          "purpose": {
+            "type": "string",
+            "title": "Purpose",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "NewCooldownForCryoRequest"
+      },
+      "NewCooldownRequest": {
+        "properties": {
+          "cryo": {
+            "type": "string",
+            "title": "Cryo"
+          },
+          "chip_name": {
+            "type": "string",
+            "title": "Chip Name"
+          },
+          "num_qubits": {
+            "type": "integer",
+            "title": "Num Qubits"
+          },
+          "cooldown_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cooldown Date"
+          },
+          "operator": {
+            "type": "string",
+            "title": "Operator",
+            "default": ""
+          },
+          "purpose": {
+            "type": "string",
+            "title": "Purpose",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "cryo",
+          "chip_name",
+          "num_qubits"
+        ],
+        "title": "NewCooldownRequest"
+      },
+      "RepoInfo": {
+        "properties": {
+          "remote_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Url"
+          },
+          "local_path": {
+            "type": "string",
+            "title": "Local Path"
+          },
+          "has_git": {
+            "type": "boolean",
+            "title": "Has Git"
+          },
+          "ready": {
+            "type": "boolean",
+            "title": "Ready"
+          }
+        },
+        "type": "object",
+        "required": [
+          "remote_url",
+          "local_path",
+          "has_git",
+          "ready"
+        ],
+        "title": "RepoInfo"
+      },
+      "RepoSetupRequest": {
+        "properties": {
+          "repo_url": {
+            "type": "string",
+            "title": "Repo Url"
+          },
+          "token": {
+            "type": "string",
+            "title": "Token",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "repo_url"
+        ],
+        "title": "RepoSetupRequest"
+      },
+      "StatusResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "sync": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SyncResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "StatusResponse"
+      },
+      "SummaryLine": {
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "title": "Line Id"
+          },
+          "qubits": {
+            "type": "string",
+            "title": "Qubits"
+          },
+          "total_atten": {
+            "type": "number",
+            "title": "Total Atten"
+          },
+          "total_gain": {
+            "type": "number",
+            "title": "Total Gain"
+          },
+          "stages": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_id",
+          "qubits",
+          "total_atten",
+          "total_gain",
+          "stages"
+        ],
+        "title": "SummaryLine"
+      },
+      "SummarySection": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "lines": {
+            "items": {
+              "$ref": "#/components/schemas/SummaryLine"
+            },
+            "type": "array",
+            "title": "Lines"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "lines"
+        ],
+        "title": "SummarySection"
+      },
+      "SyncInfo": {
+        "properties": {
+          "has_git": {
+            "type": "boolean",
+            "title": "Has Git"
+          },
+          "has_remote": {
+            "type": "boolean",
+            "title": "Has Remote"
+          },
+          "unpushed_commits": {
+            "type": "integer",
+            "title": "Unpushed Commits"
+          },
+          "branch": {
+            "type": "string",
+            "title": "Branch"
+          }
+        },
+        "type": "object",
+        "required": [
+          "has_git",
+          "has_remote",
+          "unpushed_commits",
+          "branch"
+        ],
+        "title": "SyncInfo"
+      },
+      "SyncResult": {
+        "properties": {
+          "committed": {
+            "type": "boolean",
+            "title": "Committed",
+            "default": false
+          },
+          "pushed": {
+            "type": "boolean",
+            "title": "Pushed",
+            "default": false
+          },
+          "push_error": {
+            "type": "string",
+            "title": "Push Error",
+            "default": ""
+          },
+          "has_unpushed": {
+            "type": "boolean",
+            "title": "Has Unpushed",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "SyncResult"
+      },
+      "TemplateUpdate": {
+        "properties": {
+          "stages": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Stages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "stages"
+        ],
+        "title": "TemplateUpdate"
+      },
+      "TemplatesInfo": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/ModuleTemplate"
+            },
+            "type": "array",
+            "title": "Modules"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "modules"
+        ],
+        "title": "TemplatesInfo"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "YearGroup": {
+        "properties": {
+          "year": {
+            "type": "string",
+            "title": "Year"
+          },
+          "cooldowns": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cooldowns"
+          }
+        },
+        "type": "object",
+        "required": [
+          "year",
+          "cooldowns"
+        ],
+        "title": "YearGroup"
+      }
+    }
+  }
+}

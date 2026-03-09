@@ -5,4 +5,4 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type NewCooldownRequestCooldownDate = string | null;
+export type BulkLineUpdateStages = {[key: string]: string[]};
