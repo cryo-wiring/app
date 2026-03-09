@@ -1,14 +1,12 @@
-<a href="https://github.com/cryowire">
-  <img src="https://raw.githubusercontent.com/cryowire/artwork/main/logo-type/logotype.png" alt="cryowire" width="400" />
-</a>
+<p align="center"><a href="https://github.com/cryowire">
+  <img src="https://raw.githubusercontent.com/cryowire/artwork/main/logo-type/logotype.png" alt="cryowire" width="600" />
+</a></p>
 
-# cryowire/app
-
-Web UI for browsing and editing dilution refrigerator wiring configurations.
-
-Built with FastAPI + Next.js on top of [cryowire](https://github.com/cryowire/core).
-
-See **[cryowire.github.io](https://cryowire.github.io/)** for the full project overview.
+<h1 align="center">cryowire/app</h1>
+<p align="center">Web UI for browsing and editing dilution refrigerator wiring configurations.</p>
+<p align="center">
+  <a href="https://cryowire.github.io/"><img src="https://img.shields.io/badge/Website-cryowire.github.io-38bdf8?style=for-the-badge" alt="Website" /></a>
+</p>
 
 ## For Users
 
