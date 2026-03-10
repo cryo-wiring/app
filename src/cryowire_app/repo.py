@@ -86,7 +86,16 @@ class DataRepo:
 
         if self.remote_url:
             clone_url = self._inject_token(self.remote_url)
-            if self.local_path.exists():
+            is_empty_dir = (
+                self.local_path.exists()
+                and self.local_path.is_dir()
+                and not any(self.local_path.iterdir())
+            )
+            if not self.local_path.exists() or is_empty_dir:
+                logger.info("Cloning %s -> %s", self.remote_url, self.local_path)
+                self._repo = Repo.clone_from(clone_url, self.local_path)
+                self._configure_git_user()
+            else:
                 try:
                     self._repo = Repo(self.local_path)
                     self._configure_git_user()
@@ -95,13 +104,13 @@ class DataRepo:
                     self.pull()
                 except InvalidGitRepositoryError:
                     raise RuntimeError(
-                        f"{self.local_path} exists but is not a git repository. "
-                        "Remove it or use a different --data-dir."
+                        f"Directory '{self.local_path}' exists but is not a git repository.\n"
+                        f"  REPO_URL = {self.remote_url}\n"
+                        "Possible fixes:\n"
+                        f"  1. Remove the directory:  rm -rf {self.local_path}\n"
+                        "  2. Use a different --data-dir\n"
+                        "  3. If running in Docker:   docker compose down -v"
                     )
-            else:
-                logger.info("Cloning %s -> %s", self.remote_url, self.local_path)
-                self._repo = Repo.clone_from(clone_url, self.local_path)
-                self._configure_git_user()
             self._save_to_env()
         else:
             # Local-only mode: use existing directory as-is

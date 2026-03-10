@@ -14,7 +14,13 @@ services:
       - REPO_URL=${REPO_URL:-}
       - GITHUB_TOKEN=${GITHUB_TOKEN:-}
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/repo')"]
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/repo')",
+        ]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -50,5 +56,5 @@ services:
       - run
     network_mode: host
     depends_on:
-      backend:
-        condition: service_healthy
+      - frontend
+      - backend
