@@ -1,4 +1,4 @@
-.PHONY: setup seed dev backend frontend api-schema up up-dev down
+.PHONY: setup seed dev backend frontend api-schema up up-dev up-tunnel up-dev-tunnel down
 
 # ── Local (no Docker) ────────────────────────────────────
 
@@ -41,6 +41,14 @@ up:
 # Start development stack (hot-reload, local ./data mount)
 up-dev:
 	docker compose -f compose.dev.yaml up --build
+
+# Start production stack with Cloudflare Tunnel
+up-tunnel:
+	docker compose -f compose.yaml --profile tunnel up --build -d
+
+# Start development stack with Cloudflare Tunnel
+up-dev-tunnel:
+	docker compose -f compose.dev.yaml --profile tunnel up --build
 
 # Stop running stack
 down:

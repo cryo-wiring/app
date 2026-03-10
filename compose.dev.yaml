@@ -35,3 +35,20 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+
+  tunnel:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    profiles:
+      - tunnel
+    env_file:
+      - .env
+    command:
+      - tunnel
+      - --no-autoupdate
+      - --no-chunked-encoding
+      - run
+    network_mode: host
+    depends_on:
+      backend:
+        condition: service_healthy
